@@ -38,6 +38,7 @@ Plugin 'https://github.com/kien/ctrlp.vim'
 "Plugin 'joonty/vdebug'
 "Plugin 'Lokaltog/vim-powerline.git'
 "Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'scrooloose/syntastic.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -126,5 +127,10 @@ au GUIEnter * set vb t_vb=
 
 "easy tab switching
 :noremap <Leader>f gt
-:noremap <Leader>d gT
+":noremap <Leader>d gT
+
+"easy var_dump
+:noremap <Leader>d ovar_dump();die();<esc>bbba
+:noremap <Leader>v ovar_dump();<esc>ba
+:noremap <Leader>x oexit();<esc>ba
 
