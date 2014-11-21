@@ -37,6 +37,7 @@ Plugin 'https://github.com/kien/ctrlp.vim'
 "Plugin 'bling/vim-airline'
 "Plugin 'joonty/vdebug'
 "Plugin 'Lokaltog/vim-powerline.git'
+"Plugin 'scrooloose/nerdcommenter.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -81,8 +82,10 @@ au GUIEnter * set vb t_vb=
 
 "easy vsplit resize
 :nmap <C-v> :vertical resize +5<cr>
+:nmap <C-x> :resize +5<cr>
 :nmap 25 :vertical resize 40<cr>
 :nmap 50 <c-w>=
+:nmap 75 :vertical resize 120<cr>
 :nmap 99 <c-w>\|
 
 "easy window navigation
