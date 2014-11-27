@@ -116,6 +116,7 @@ au GUIEnter * set vb t_vb=
 "case insensitive search, unless told otherwise
 :set ignorecase
 :set smartcase
+:set incsearch
 
 "toggle NERDtree
 :noremap <Leader>m :NERDTreeToggle<cr>
@@ -129,8 +130,16 @@ au GUIEnter * set vb t_vb=
 :noremap <Leader>f gt
 ":noremap <Leader>d gT
 
-"easy var_dump
-:noremap <Leader>d ovar_dump();die();<esc>bbba
-:noremap <Leader>v ovar_dump();<esc>ba
-:noremap <Leader>x oexit();<esc>ba
+"common snippets
+:noremap <Leader>de ovar_dump();exit();<esc>bbba
+:noremap <Leader>dv ovar_dump();<esc>ba
+:noremap <Leader>dd odie();<esc>ba
+":noremap <Leader>t o<?php <esc>o<esc> i?><esc>bbi
+:noremap <Leader>t o<?php ; ?><esc>bbi
+
+"copy paste register
+":noremap <Leader>p "+P
+":noremap <Leader>y "+y
+
+nnoremap <Leader>y :call system('nc localhost 8377', @0)<CR>
 
