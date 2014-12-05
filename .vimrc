@@ -59,23 +59,18 @@ filetype plugin indent on    " required
 "------------- END VUNDLE ------------------
 
 
-
 "PEAR formatting
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-
-"test
+"set ctrlp to search relative to first file opened
 :let g:ctrlp_working_path_mode = 0
 "@cd %:h'
 
 "probably not necessary
 set t_Co=256
-
-"for the current file use % e.g. :nmap <leader>r :w!<cr> :!php -f %<cr>
-"this will save and run the current file in php interactive shell with 'leader r'
 
 "no error bells
 set noeb vb t_vb=
@@ -101,11 +96,12 @@ au GUIEnter * set vb t_vb=
 :nmap ˚ <C-w>K
 :nmap ¬ <C-w>L
 
-"map escape key to jj
-":imap jj <Esc>
-
 "set leader key
 :let mapleader = ","
+
+"for the current file use % e.g. :nmap <leader>r :w!<cr> :!php -f %<cr>
+"this will save and run the current file in php interactive shell with 'leader r'
+:nmap <leader>r :w!<cr> :!php -f %<cr>
 
 "fast quit
 :nmap <leader>q :q<cr>
@@ -117,6 +113,7 @@ au GUIEnter * set vb t_vb=
 :set ignorecase
 :set smartcase
 :set incsearch
+:set hlsearch
 
 "toggle NERDtree
 :noremap <Leader>m :NERDTreeToggle<cr>
@@ -125,21 +122,30 @@ au GUIEnter * set vb t_vb=
 :noremap <Leader>, :CtrlP<cr>
 :noremap <Leader>. :CtrlPMRU<cr>
 
+"common snippets
+:noremap <Leader>de ovar_dump();exit();<esc>bbhh
+:noremap <Leader>dv ovar_dump();<esc>h
+:noremap <Leader>dd odie();<esc>h
+:noremap <Leader>t o<?php ; ?><esc>bb
+
+"for drupal syntax highlighting
+:nmap <leader>pp :set syntax=php<cr>
+
+"don't use php code sniffer
+let g:syntastic_php_checkers=['php']
+
+"disable macro record
+:nmap q <NOP>
 
 "easy tab switching
-:noremap <Leader>f gt
+":noremap <Leader>f gt
 ":noremap <Leader>d gT
-
-"common snippets
-:noremap <Leader>de ovar_dump();exit();<esc>bbba
-:noremap <Leader>dv ovar_dump();<esc>ba
-:noremap <Leader>dd odie();<esc>ba
-":noremap <Leader>t o<?php <esc>o<esc> i?><esc>bbi
-:noremap <Leader>t o<?php ; ?><esc>bbi
 
 "copy paste register
 ":noremap <Leader>p "+P
 ":noremap <Leader>y "+y
 
-nnoremap <Leader>y :call system('nc localhost 8377', @0)<CR>
+"nnoremap <Leader>y :call system('nc localhost 8377', @0)<CR>
 
+"map escape key to jj
+":imap jj <Esc>
