@@ -105,6 +105,7 @@ au GUIEnter * set vb t_vb=
 
 "fast quit
 :nmap <leader>q :q<cr>
+:nmap <leader>z :q!<cr>
 
 "map save to leader ,
 :nmap <Leader>w :w!<cr>
