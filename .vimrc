@@ -69,6 +69,12 @@ set tabstop=4
 :let g:ctrlp_working_path_mode = 0
 "@cd %:h'
 
+"cd for current window only
+":lcd %:p:h
+"cd for all windows
+":cd %:p:h
+"CD in NERDtree to change to current directory
+
 "probably not necessary
 set t_Co=256
 
@@ -122,6 +128,9 @@ au GUIEnter * set vb t_vb=
 "ctrl p
 :noremap <Leader>, :CtrlP<cr>
 :noremap <Leader>. :CtrlPMRU<cr>
+:noremap <Leader>k :CtrlPTag<cr>
+":set tags=/my/dir/tags
+"ctags -R . //creates ctag file recursively
 
 "common snippets
 :noremap <Leader>de ovar_dump();exit();<esc>bbhh
