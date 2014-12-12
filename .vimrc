@@ -39,6 +39,7 @@ Plugin 'https://github.com/kien/ctrlp.vim'
 "Plugin 'Lokaltog/vim-powerline.git'
 "Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/syntastic.git'
+Plugin 'https://github.com/ahw/vim-pbcopy.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,7 +57,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
+"-------------------------------------------
 "------------- END VUNDLE ------------------
+"-------------------------------------------
 
 
 "PEAR formatting
@@ -139,13 +142,19 @@ au GUIEnter * set vb t_vb=
 :noremap <Leader>t o<?php ; ?><esc>bb
 
 "for drupal syntax highlighting
-:nmap <leader>pp :set syntax=php<cr>
+":nmap <leader>pp :set syntax=php<cr>
 
 "don't use php code sniffer
 let g:syntastic_php_checkers=['php']
 
 "disable macro record
 :nmap q <NOP>
+
+"disable man lookup
+:nmap K <NOP>
+
+"clear search
+:noremap <leader>s :let @/ = ""<cr>
 
 "easy tab switching
 ":noremap <Leader>f gt
@@ -159,3 +168,5 @@ let g:syntastic_php_checkers=['php']
 
 "map escape key to jj
 ":imap jj <Esc>
+
+
