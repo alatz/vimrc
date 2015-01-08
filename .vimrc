@@ -34,12 +34,13 @@ Plugin 'gmarik/Vundle.vim'
 "
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'https://github.com/kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'https://github.com/ahw/vim-pbcopy.git'
+Plugin 'https://github.com/scrooloose/nerdcommenter'
 "Plugin 'bling/vim-airline'
 "Plugin 'joonty/vdebug'
 "Plugin 'Lokaltog/vim-powerline.git'
-"Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'https://github.com/ahw/vim-pbcopy.git'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,16 +68,6 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-
-"set ctrlp to search relative to first file opened
-:let g:ctrlp_working_path_mode = 0
-"@cd %:h'
-
-"cd for current window only
-":lcd %:p:h
-"cd for all windows
-":cd %:p:h
-"CD in NERDtree to change to current directory
 
 "probably not necessary
 set t_Co=256
@@ -108,6 +99,13 @@ au GUIEnter * set vb t_vb=
 "set leader key
 :let mapleader = ","
 
+"fast grepping
+command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude=*.svn-base --exclude=*.svn --exclude=tags --exclude=.svn . -e "<args>"' | copen | execute 'silent /<args>' | redraw!
+nnoremap \ :Grep<space>
+
+"previous char in line
+:noremap <leader>; ,
+
 "for the current file use % e.g. :nmap <leader>r :w!<cr> :!php -f %<cr>
 "this will save and run the current file in php interactive shell with 'leader r'
 :nmap <leader>r :w!<cr> :!php -f %<cr>
@@ -116,7 +114,7 @@ au GUIEnter * set vb t_vb=
 :nmap <leader>q :q<cr>
 :nmap <leader>z :q!<cr>
 
-"map save to leader ,
+"map save to leader w 
 :nmap <Leader>w :w!<cr>
 
 "case insensitive search, unless told otherwise
@@ -128,10 +126,23 @@ au GUIEnter * set vb t_vb=
 "toggle NERDtree
 :noremap <Leader>m :NERDTreeToggle<cr>
 
+"set ctrlp to search relative to first file opened
+:let g:ctrlp_working_path_mode = 0
+
 "ctrl p
 :noremap <Leader>, :CtrlP<cr>
 :noremap <Leader>. :CtrlPMRU<cr>
 :noremap <Leader>k :CtrlPTag<cr>
+
+"Note
+"@cd %:h'
+"cd for current window only
+":lcd %:p:h
+"cd for all windows
+":cd %:p:h
+"CD in NERDtree to change to current directory
+
+"Note
 ":set tags=/my/dir/tags
 "ctags -R . //creates ctag file recursively
 
@@ -141,8 +152,6 @@ au GUIEnter * set vb t_vb=
 :noremap <Leader>dd odie();<esc>h
 :noremap <Leader>t o<?php ; ?><esc>bb
 
-"for drupal syntax highlighting
-":nmap <leader>pp :set syntax=php<cr>
 
 "don't use php code sniffer
 let g:syntastic_php_checkers=['php']
@@ -153,20 +162,16 @@ let g:syntastic_php_checkers=['php']
 "disable man lookup
 :nmap K <NOP>
 
+"disable ctrl+p default binding
+:nmap <C-p> <NOP>
+
 "clear search
 :noremap <leader>s :let @/ = ""<cr>
 
-"easy tab switching
-":noremap <Leader>f gt
-":noremap <Leader>d gT
+"for drupal syntax highlighting
+":nmap <leader>pp :set syntax=php<cr>
 
 "copy paste register
 ":noremap <Leader>p "+P
 ":noremap <Leader>y "+y
-
-"nnoremap <Leader>y :call system('nc localhost 8377', @0)<CR>
-
-"map escape key to jj
-":imap jj <Esc>
-
 
