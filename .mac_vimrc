@@ -35,15 +35,15 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'https://github.com/kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'https://github.com/scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-powerline.git'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'jpalardy/vim-slime'
-Plugin 'tpope/vim-surround'
 "Plugin 'https://github.com/ahw/vim-pbcopy.git'
+Plugin 'https://github.com/scrooloose/nerdcommenter'
 "Plugin 'bling/vim-airline'
 "Plugin 'joonty/vdebug'
+Plugin 'Lokaltog/vim-powerline.git'
+Plugin 'altercation/vim-colors-solarized.git'
 "Plugin 'Valloric/YouCompleteMe'
+Plugin 'jpalardy/vim-slime'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,8 +65,11 @@ filetype plugin indent on    " required
 "------------- END VUNDLE ------------------
 "-------------------------------------------
 
-"Is ths necessary?
+"vim-slime-settings
 let g:slime_target = "screen"
+let g:slime_no_mappings = 1
+nmap <c-n><c-n> <Plug>SlimeParagraphSend
+xmap <c-n><c-n> <Plug>SlimeRegionSend
 
 set shell=/bin/bash
 
@@ -163,10 +166,8 @@ nnoremap \ :Grep<space>
 :noremap <Leader>de ovar_dump();exit();<esc>bbhh
 :noremap <Leader>dv ovar_dump();<esc>h
 :noremap <Leader>dd odie();<esc>h
-":noremap <Leader>t o<?php ; ?><esc>bb
+:noremap <Leader>t o<?php ; ?><esc>bb
 
-"run tests on current file
-nmap <leader>t :!clear && phpunit %<cr>
 
 "don't use php code sniffer
 let g:syntastic_php_checkers=['php']
