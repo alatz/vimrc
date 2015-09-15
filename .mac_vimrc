@@ -65,11 +65,6 @@ filetype plugin indent on    " required
 "------------- END VUNDLE ------------------
 "-------------------------------------------
 
-"vim-slime-settings
-let g:slime_target = "screen"
-let g:slime_no_mappings = 1
-nmap <c-n><c-n> <Plug>SlimeParagraphSend
-xmap <c-n><c-n> <Plug>SlimeRegionSend
 
 set shell=/bin/bash
 
@@ -168,6 +163,12 @@ nnoremap \ :Grep<space>
 :noremap <Leader>dd odie();<esc>h
 :noremap <Leader>t o<?php ; ?><esc>bb
 
+"Vim-slime-settings
+let g:slime_target = "screen"
+let g:slime_no_mappings = 1
+nmap <c-m><c-m> <Plug>SlimeParagraphSend
+xmap <c-m><c-m> <Plug>SlimeRegionSend
+:map <Leader>n va(<c-m><c-m>
 
 "don't use php code sniffer
 let g:syntastic_php_checkers=['php']
