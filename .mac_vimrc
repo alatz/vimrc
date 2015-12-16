@@ -35,6 +35,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'https://github.com/kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic.git'
+"Plugin 'rizzatti/dash.vim'
 "Plugin 'https://github.com/ahw/vim-pbcopy.git'
 Plugin 'https://github.com/scrooloose/nerdcommenter'
 "Plugin 'bling/vim-airline'
@@ -43,7 +44,14 @@ Plugin 'Lokaltog/vim-powerline.git'
 Plugin 'altercation/vim-colors-solarized.git'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'jpalardy/vim-slime'
+Plugin 'wlangstroth/vim-racket'
+"Plugin 'hylang/vim-hy'
+
+"Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+"Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -163,12 +171,16 @@ nnoremap \ :Grep<space>
 :noremap <Leader>dd odie();<esc>h
 :noremap <Leader>t o<?php ; ?><esc>bb
 
+"jk is esc
+inoremap jk <esc>
+
 "Vim-slime-settings
 let g:slime_target = "screen"
 let g:slime_no_mappings = 1
 nmap <c-m><c-m> <Plug>SlimeParagraphSend
 xmap <c-m><c-m> <Plug>SlimeRegionSend
-:map <Leader>n va(<c-m><c-m>
+:map <Leader>a va(<c-m><c-m>
+:map <c-n><c-n> va(<c-m><c-m>
 
 "don't use php code sniffer
 let g:syntastic_php_checkers=['php']
@@ -177,10 +189,10 @@ let g:syntastic_php_checkers=['php']
 :nmap q <NOP>
 
 "disable man lookup
-:nmap K <NOP>
+:nnoremap K <nop>
 
 "disable ctrl+p default binding
-:nmap <C-p> <NOP>
+:map <C-p> <NOP>
 
 "clear search
 :noremap <leader>s :let @/ = ""<cr>
